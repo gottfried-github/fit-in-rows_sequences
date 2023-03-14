@@ -38,4 +38,17 @@ async function randomFromGroups(groupsPath, randomPath) {
     await fs.writeFile(randomPath, JSON.stringify(randomGroups, null, 2))
 }
 
-export {groupByRatio, groupsLengths, randomFromGroups}
+/**
+ * @param {String} sequencesPath relative pathname to the file with sequences
+ * @param {String} groupsPath relative pathname to the output file
+ * @description reads the sequences from the file, groups them and picks a random thousand from each group and writes the result to a file
+*/
+async function randomGroups(sequencesPath, groupsPath) {
+    const sequences = JSON.parse(await fs.readFile(sequencesPath, 'utf8'))
+    const groups = _groupByRatio(sequences)
+    const randomSequences = _randomFromGroups(groups)
+    
+    await fs.writeFile(groupsPath, JSON.stringify(randomSequences, null, 2))
+}
+
+export {groupByRatio, groupsLengths, randomFromGroups, randomGroups}
