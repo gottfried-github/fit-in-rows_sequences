@@ -1,3 +1,5 @@
+import {hundredRandomSequences, hundredUniqueRandomNumbers} from './helpers.js'
+
 /**
  * @param {Array} sequence array of `item`s
  * @returns {Number} an integer specifying the number of wide items in the sequence
@@ -40,28 +42,15 @@ function groupsLengths(groups) {
  * */ 
 function randomFromGroups(groups) {
     return groups.map(group => {
-        if (group.length < 100) return group
+        if (group.length < 101) return group
 
         return hundredRandomSequences(group)
     })
 }
 
-/**
- * @param {Array} sequences array of `sequence`s of length > 100
- * @returns {Array} a hundred random sequences from the given ones
-*/
-function hundredRandomSequences(sequences) {
-    const numbers = hundredUniqueRandomNumbers(sequences.length)
+export {
+    groupByRatio, 
+    groupsLengths,
 
-    return numbers.map(n => sequences[n])
+    randomFromGroups, 
 }
-
-/**
- * @param {Number} maximum a number above 100
- * @returns a hundred unique numbers below given maximum
-*/
-function hundredUniqueRandomNumbers(maximum) {
-
-}
-
-export {groupByRatio, groupsLengths}
