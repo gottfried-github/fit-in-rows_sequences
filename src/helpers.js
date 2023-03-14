@@ -1,21 +1,22 @@
 /**
- * @param {Array} sequences array of `sequence`s of length > 100
- * @returns {Array} a hundred random sequences from the given ones
+ * @param {Array} sequences array of `sequence`s of length > 1000
+ * @returns {Array} a thousand random sequences from the given ones
 */
-function hundredRandomSequences(sequences) {
-    const numbers = hundredUniqueRandomNumbers(sequences.length)
+function thousandRandomSequences(sequences) {
+    const numbers = uniqueRandomNumbers(1000, sequences.length)
 
     return numbers.map(n => sequences[n])
 }
 
 /**
- * @param {Number} maximum a number above 100
- * @returns a hundred unique numbers below given maximum
+ * @param {Number} number how many unique numbers to generate: must be smaller than `maximum`
+ * @param {Number} maximum the maximal number to generate: must be larger than `number`
+ * @returns a given number of unique random numbers below given maximum
 */
-function hundredUniqueRandomNumbers(maximum) {
+function uniqueRandomNumbers(number, maximum) {
     const numbers = []
 
-    while (numbers.length < 101) {
+    while (numbers.length < number) {
         const n = Math.floor(Math.random() * maximum+1)
         
         if (numbers.includes(n)) continue
@@ -27,5 +28,5 @@ function hundredUniqueRandomNumbers(maximum) {
 }
 
 export {
-    hundredRandomSequences, hundredUniqueRandomNumbers
+    thousandRandomSequences, uniqueRandomNumbers
 }

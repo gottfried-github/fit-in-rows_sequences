@@ -1,4 +1,4 @@
-import {hundredRandomSequences, hundredUniqueRandomNumbers} from './helpers.js'
+import {thousandRandomSequences} from './helpers.js'
 
 /**
  * @param {Array} sequence array of `item`s
@@ -38,13 +38,13 @@ function groupsLengths(groups) {
 
 /**
  * @param {Array} groups
- * @returns a hundred random sequences from each group or the entire group if less than 100
+ * @returns a thousand random sequences from each group or the entire group if less than 1000
  * */ 
 function randomFromGroups(groups) {
     return groups.map(group => {
-        if (group.length < 101) return group
+        if (group.length < 1001) return group
 
-        return hundredRandomSequences(group)
+        return thousandRandomSequences(group)
     })
 }
 
