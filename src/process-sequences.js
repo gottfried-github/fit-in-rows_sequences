@@ -34,4 +34,34 @@ function groupsLengths(groups) {
     return groups.map(group => group.length)
 }
 
+/**
+ * @param {Array} groups
+ * @returns a hundred random sequences from each group or the entire group if less than 100
+ * */ 
+function randomFromGroups(groups) {
+    return groups.map(group => {
+        if (group.length < 100) return group
+
+        return hundredRandomSequences(group)
+    })
+}
+
+/**
+ * @param {Array} sequences array of `sequence`s of length > 100
+ * @returns {Array} a hundred random sequences from the given ones
+*/
+function hundredRandomSequences(sequences) {
+    const numbers = hundredUniqueRandomNumbers(sequences.length)
+
+    return numbers.map(n => sequences[n])
+}
+
+/**
+ * @param {Number} maximum a number above 100
+ * @returns a hundred unique numbers below given maximum
+*/
+function hundredUniqueRandomNumbers(maximum) {
+
+}
+
 export {groupByRatio, groupsLengths}
