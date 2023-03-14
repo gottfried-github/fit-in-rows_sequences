@@ -30,4 +30,8 @@ function groupByRatio(sequences) {
     return groups
 }
 
-export {groupByRatio}
+function groupsLengths(groups) {
+    return groups.map(group => group.length)
+}
+
+export {groupByRatio, groupsLengths}
