@@ -1,0 +1,23 @@
+{
+  "name": "sophos-grid_sequences",
+  "version": "0.0.1",
+  "description": "generate and process sequences of items",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "/"
+  },
+  "keywords": [
+    "sophos-grid",
+    "nodejs"
+  ],
+  "author": "gottfried",
+  "license": "MIT",
+  "dependencies": {
+    "permutationsjs": "^0.1.5"
+  }
+}

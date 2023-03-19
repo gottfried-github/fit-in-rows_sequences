@@ -1,5 +1,17 @@
 import fs from 'fs/promises'
 import {groupByRatio as _groupByRatio, groupsLengths as _groupsLengths, randomFromGroups as _randomFromGroups} from './src/process-sequences.js'
+import {sequences as _sequences} from './src/generate-sequences.js'
+
+/**
+ * @param {Number} length the length of the sequences to generate
+ * @param {String} sequencesPath relative pathname to the file to which write the sequences
+ * @description generates sequences of given length and writes to a file
+*/
+async function sequences(length, sequencesPath) {
+    const sequences = _sequences(length)
+
+    await fs.writeFile(sequencesPath, JSON.stringify(sequences, null, 2))
+}
 
 /**
  * @param {String} sequencesPath relative pathname to a JSON-formatted file containing sequences
@@ -53,4 +65,4 @@ async function randomGroups(sequencesPath, groupsPath) {
     await fs.writeFile(groupsPath, JSON.stringify(randomSequences, null, 2))
 }
 
-export {groupByRatio, groupsLengths, randomFromGroups, randomGroups}
+export {sequences, groupByRatio, groupsLengths, randomFromGroups, randomGroups}
