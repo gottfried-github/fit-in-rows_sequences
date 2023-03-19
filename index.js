@@ -17,6 +17,7 @@ async function groupByRatio(sequencesPath, groupedPath) {
 /**
  * @param {String} groupsLengths relative pathname to grouped sequences file
  * @param {String} lengthsPath relative pathname to the output file
+ * @description reads groups from a file; writes the lengths of the groups to a file
 */
 async function groupsLengths(groupsPath, lengthsPath) {
     const groups = JSON.parse(await fs.readFile(groupsPath, 'utf8'))
@@ -29,6 +30,7 @@ async function groupsLengths(groupsPath, lengthsPath) {
 /**
  * @param {String} groupsPath relative pathname to groups file
  * @param {String} randomPath relative pathname to output file
+ * @description picks random thousand sequences from each group or the entire group if smaller than a thousand
 */
 async function randomFromGroups(groupsPath, randomPath) {
     const groups = JSON.parse(await fs.readFile(groupsPath, 'utf8'))
